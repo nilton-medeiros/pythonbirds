@@ -1,4 +1,6 @@
 class Pessoa:
+    olhos = 2  # Atributo de classe, default
+
     def __init__(self, *filhos, nome=None, idade=56):
         self.idade = idade
         self.nome = nome
@@ -9,17 +11,24 @@ class Pessoa:
 
 
 if __name__ == '__main__':
-    nilton = Pessoa(nome='Nilton', idade=56)
-    matheus = Pessoa(nome='Matheus', idade=34)
-    print(Pessoa.cumprimentar(matheus))
-    print(id(matheus))
-    print(matheus.cumprimentar())
-    print(matheus.nome)
-    print(matheus.idade)
-    for filho in matheus.filhos:
+    renzo = Pessoa(nome='renzo', idade=56)
+    luciano = Pessoa(nome='luciano', idade=34)
+    print(Pessoa.cumprimentar(luciano))
+    print(id(luciano))
+    print(luciano.cumprimentar())
+    print(luciano.nome)
+    print(luciano.idade)
+    for filho in luciano.filhos:
         print(filho.nome)
-    matheus.sobrenome = 'Medeiros'
-    print(matheus.sobrenome)
-    del matheus.filhos
-    print(nilton.__dict__)
-    print(matheus.__dict__)
+    luciano.sobrenome = 'Ramalho'
+    print(luciano.sobrenome)
+    del luciano.filhos
+    luciano.olhos = 1
+    del luciano.olhos
+    print(renzo.__dict__)
+    print(luciano.__dict__)
+    Pessoa.olhos = 3
+    print(Pessoa.olhos)
+    print(renzo.olhos)
+    print(luciano.olhos)
+    print(id(Pessoa.olhos), id(renzo.olhos), id(luciano.olhos))
